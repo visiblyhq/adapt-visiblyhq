@@ -1,0 +1,13 @@
+{
+  "name": "adapt-visiblyhq",
+  "version": "0.0.1",
+  "framework": ">=5.24.4",
+  "extension": "vis",
+  "displayName": "VisiblyHQ",
+  "description": "",
+  "main": "/js/adapt-visiblyhq.js",
+  "keywords": ["adapt-plugin", "adapt-extension"],
+  "license": "",
+  "targetAttribute": "_vis",
+  "private": true
+}

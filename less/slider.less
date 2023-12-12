@@ -1,0 +1,156 @@
+@slider-track-height: 1rem;
+
+.slider {
+  // Labels
+  &__label-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  &__number {
+    top: unset;
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2;
+    text-align: center;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+
+    &-selection,
+    &-model-answer {
+      height: 2.5rem;
+      width: 2.5rem;
+      line-height: 2.5;
+      text-align: center;
+      border-radius: 50%;
+      .transform(translateX(-50%));
+
+      .dir-rtl & {
+        .transform(translateX(-50%) rotateY(180deg));
+      }
+    }
+
+    &-selection {
+      background-color: @item-color;
+      color: @item-color-inverted;
+      z-index: 5;
+    }
+
+    &-model-answer {
+      background-color: @item-color;
+      color: @item-color-inverted;
+      z-index: 10;
+    }
+  }
+
+  // Scale
+  &__scale {
+    &-container {
+      position: relative;
+      height: 2px;
+      margin-top: @item-margin * 3;
+      // Indent half the width of the range slider handle either side
+      margin-left: @slider-handle-width / 2;
+      margin-right: @slider-handle-width / 2;
+      background-color: @background;
+    }
+
+    &-notch {
+      position: absolute;
+      top: -20px;
+      height: 22px;
+      width: 2px;
+      .transform(translateX(-50%));
+      background-color: @background;
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-top: 2rem;
+
+
+    // Slider bar
+    &-input-track {
+      background-color: @item-color;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    &-input-fill {
+      background-color: @vis-highlight-colour;
+    }
+  }
+
+  // Slider input thumb mixin
+  .slider-thumb() {
+    height: @slider-handle-height;
+    width: @slider-handle-width;
+    background-color: @vis-highlight-colour;
+    border-style: solid;
+    border-color: black;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+    .is-disabled & {
+      box-shadow: none;
+      background-color: transparent;
+      cursor: default;
+    }
+  }
+
+  // Slider input track mixin
+  .slider-track() {
+    height: @slider-track-height;
+    width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  // Class to show the correct answers
+  &__widget.show-correct-answer &__number-selection {
+    opacity: 0;
+  }
+
+  &__widget:not(.is-disabled) &__number {
+    cursor: pointer;
+  }
+
+  // Class to show whether the users selection is in/correct
+  &__widget.show-user-answer.is-correct &__number-selection {
+    background-color: @validation-success;
+    color: @validation-success-inverted;
+  }
+
+  &__widget.show-user-answer.is-correct &__item-input-fill {
+    background-color: @validation-success;
+  }
+
+  &__widget.show-user-answer.is-incorrect &__number-selection {
+    background-color: @validation-error;
+    color: @validation-error-inverted;
+  }
+
+  &__widget.show-user-answer.is-incorrect &__item-input-fill {
+    background-color: @validation-error;
+  }
+
+  &__widget.show-correct-answer.is-correct &__item-input-fill,
+  &__widget.show-correct-answer.is-incorrect &__item-input-fill {
+    background-color: @validation-success;
+  }
+
+  &__widget.show-correct-answer.is-correct &__number-model-answer,
+  &__widget.show-correct-answer.is-incorrect &__number-model-answer {
+    background-color: @validation-success;
+    color: @validation-success-inverted;
+  }
+
+  &__widget {
+    margin-top: 4rem;
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "pluginLocations": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "config": {
+          "type": "object"
+        },
+        "course": {
+          "type": "object",
+          "properties": {
+            "_visTopNavBar": {
+              "type": "object",
+              "required": false,
+              "legend": "Vis Top Nav bar",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": true,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Add Vis top nav bar"
+                }
+              }
+            }
+          }
+        },
+        "contentobject": {
+          "type": "object",
+          "properties": {
+            "_visTopNavBar": {
+              "type": "object",
+              "required": false,
+              "legend": "Vis Top Nav bar",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": true,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Add Vis top nav bar"
+                }
+              }
+            }
+          }
+        },
+        "article": {
+          "type": "object",
+          "properties": {
+            "_visTopNavBar": {
+              "type": "object",
+              "required": false,
+              "legend": "Vis Top Nav bar",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": true,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Add Vis top nav bar"
+                },
+                "_isPresentation": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Is this a presentation component?",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Set whether this is a presentation component"
+                }
+              }
+            }
+          }
+        },
+        "block": {
+          "type": "object",
+          "properties": {
+            "_visTopNavBar": {
+              "type": "object",
+              "required": false,
+              "legend": "Vis Top Nav bar",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": true,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Add Vis top nav bar"
+                }
+              }
+            }
+          }
+        },
+        "component": {
+          "type": "object",
+          "properties": {
+            "_visTopNavBar": {
+              "type": "object",
+              "required": false,
+              "legend": "Vis Top Nav bar",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": true,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Add Vis top nav bar"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

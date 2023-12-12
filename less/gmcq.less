@@ -1,0 +1,58 @@
+.gmcq {
+  &-item {
+    position: relative;
+    margin: auto;
+    display: inline-block;
+
+    &__label {
+      display: block;
+      z-index: unset !important;
+      border-radius: 10px;
+      overflow: hidden;
+      border-style: solid;
+      border-color: transparent;
+      border-width: 4px;
+    }
+
+    &__label.is-selected {
+      border-color: @vis-highlight-colour;
+    }
+
+    &.is-incorrect &__label.is-selected {
+      border-color: #ff6474;
+    }
+
+    &.is-correct &__label {
+      border-color: #04d2a1;
+    }
+
+    .no-touch &__label:not(.is-disabled):not(.is-selected):hover &__option,
+    html:not(.a11y-disable-focusoutline)
+      &__input:focus-visible
+      + &__label
+      &__option {
+      background-color: @item-color-hover;
+      color: @item-color-inverted-hover;
+      .transition(background-color @duration ease-in, color @duration ease-in;);
+    }
+
+    &__label.is-disabled &__option {
+      color: @disabled-inverted;
+    }
+
+    &__img__wrapper__outer {
+      border-radius: 6px;
+      overflow: hidden;
+      position: absolute;
+      inset: 4px;
+    }
+
+    &__img__wrapper__inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 100%;
+    }
+  }
+}
