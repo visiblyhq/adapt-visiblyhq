@@ -32,7 +32,7 @@ class VisArticles extends Backbone.Controller {
         return VisArticles.questionBlockTypes.includes(componentType);
       });
 
-      if (articles[index].get("_visTopNavBar")._isPresentation === true) {
+      if (articles[index].get("_vis")?._isPresentation === true) {
         articles[index].set("_visType", "presentation");
       } else if (questionBlocks.length !== 0) {
         articles[index].set("_visType", "question");

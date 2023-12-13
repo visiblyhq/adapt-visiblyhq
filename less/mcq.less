@@ -1,0 +1,73 @@
+.mcq {
+  &__widget {
+    margin-top: 1rem;
+    &.show-correct-answer
+      &-item:not(.is-correct):not(.is-incorrect)
+      .is-selected
+      &-item__answer-icon {
+      display: block;
+    }
+    &.show-correct-answer .is-correct .is-selected &-item__correct-icon,
+    &.show-correct-answer .is-incorrect .is-selected &-item__correct-icon {
+      display: block;
+    }
+    &.show-user-answer
+      &-item:not(.is-correct):not(.is-incorrect)
+      .is-selected
+      &-item__answer-icon {
+      display: block;
+    }
+    &_:not(.is-complete) &-item__answer-icon {
+      display: block;
+    }
+    &.show-user-answer .is-correct .is-selected &-item__correct-icon,
+    &.show-user-answer .is-incorrect .is-selected &-item__incorrect-icon {
+      display: block;
+    }
+  }
+  &-item {
+    &__label {
+      color: @item-color-inverted;
+      margin: @item-margin 0px;
+      background-color: @item-color;
+      border-radius: @item-border-radius;
+      border-width: 0.2rem;
+      border-style: solid;
+      border-color: @item-color;
+      .no-touch &:not(.is-disabled):not(.is-selected):hover,
+      html:not(.a11y-disable-focusoutline) .mcq-item__input:focus-visible + & {
+        background-color: @item-color-hover;
+        color: @item-color-inverted-hover;
+        .transition(background-color @duration ease-in, color @duration ease-in;);
+      }
+      .no-touch &:not(.is-disabled):not(.is-selected):hover .mcq-item__icon {
+        .effect-scalePulse;
+      }
+      &.is-disabled {
+        background-color: @disabled;
+        color: @disabled-inverted;
+      }
+      &::on {
+        background-color: @disabled;
+        color: @disabled-inverted;
+      }
+      &.is-selected {
+        background-color: @item-color-selected;
+        color: @item-color-inverted-selected;
+        border-color: @vis-button-colour;
+      }
+    }
+    &__label:not(.is-disabled) {
+      cursor: none;
+    }
+    &__text {
+      font-weight: bold;
+      padding: @item-padding;
+      line-height: 1.2;
+      .dir-rtl & {
+        padding-left: @item-padding;
+        padding-right: @icon-size + (@item-padding * 2);
+      }
+    }
+  }
+}
