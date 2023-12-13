@@ -27,7 +27,6 @@ export default function Gmcq(props) {
 
   return (
     <div className="component__inner gmcq__inner">
-    <p>IN VIS</p>
       <templates.header {...props} />
 
       <div

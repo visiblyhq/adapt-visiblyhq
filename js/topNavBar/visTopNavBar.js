@@ -6,6 +6,14 @@ import VisTopNavBarQuitButtonView from "./visTopNavBarQuitButtonView";
 import navigation from "core/js/navigation";
 
 class VisTopNavBar extends Backbone.Controller {
+  static getInstance() {
+    if (VisTopNavBar.instance === null) {
+      VisTopNavBar.instance = new VisTopNavBar();
+    }
+
+    return VisTopNavBar.instance;
+  }
+
   initialize() {
     this.listenTo(Adapt, {
       "app:dataReady": this.onDataReady,
@@ -123,5 +131,7 @@ class VisTopNavBar extends Backbone.Controller {
     );
   }
 }
+
+VisTopNavBar.instance = null;
 
 export default VisTopNavBar;
