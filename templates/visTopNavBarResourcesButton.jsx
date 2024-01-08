@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function VisTopNavBarBackToContentButton() {
+export default function VisTopNavBarResourcesButton() {
   return (
     <React.Fragment>
       <div className="vistopnavbar__button-wrapper vistopnavbar_book_button">

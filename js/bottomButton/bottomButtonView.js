@@ -17,6 +17,12 @@ class BottomButtonView extends ButtonsView {
     this.data.isMainButton = true;
 
     const articleId = this.el.attributes["data-adapt-id"].value;
+
+    const existingElement = document.getElementById(`button__${articleId}`);
+    if (existingElement) {
+      return;
+    }
+
     var articleElement = document.getElementsByClassName(articleId)[0];
     const buttonDiv = document.createElement("div");
     buttonDiv.setAttribute("id", `button__${articleId}`);

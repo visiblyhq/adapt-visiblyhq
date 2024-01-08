@@ -27,6 +27,81 @@
                   "inputType": "Checkbox",
                   "validators": [],
                   "help": "Set whether this is a presentation component"
+                },
+                "_resources": {
+                  "type": "array",
+                  "required": false,
+                  "title": "Items",
+                  "items": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "_graphic": {
+                        "type": "object",
+                        "required": true,
+                        "title": "Graphic",
+                        "properties": {
+                          "large": {
+                            "type": "string",
+                            "required": true,
+                            "default": "",
+                            "inputType": "Asset:image",
+                            "validators": [],
+                            "help": "Large image for this item - used on desktop"
+                          },
+                          "small": {
+                            "type": "string",
+                            "required": true,
+                            "default": "",
+                            "inputType": "Asset:image",
+                            "validators": [],
+                            "help": "Small image for this item - used on mobiles"
+                          },
+                          "alt": {
+                            "type": "string",
+                            "required": false,
+                            "default": "",
+                            "inputType": "Text",
+                            "validators": [],
+                            "help": "A description of the image; required when it has meaning that must be conveyed to the learner. Avoid duplication if the item text already provides context and leave blank.",
+                            "translatable": true
+                          },
+                          "attribution": {
+                            "type": "string",
+                            "required": false,
+                            "default": "",
+                            "inputType": "Text",
+                            "validators": [],
+                            "help": "Text to be displayed as an attribution",
+                            "translatable": true
+                          }
+                        }
+                      },
+                      "text": {
+                        "type": "string",
+                        "required": false,
+                        "default": "",
+                        "title": "Item Text",
+                        "inputType": "TextArea",
+                        "validators": [],
+                        "help": "Text block",
+                        "translatable": true
+                      },
+                      "type": {
+                        "type": "string",
+                        "default": "text",
+                        "title": "Type",
+                        "inputType": {
+                          "type": "Select",
+                          "options": [
+                            "text",
+                            "image"
+                          ]
+                        },
+                        "help": "The type of the resource item"
+                      }
+                    }
+                  }
                 }
               }
             }

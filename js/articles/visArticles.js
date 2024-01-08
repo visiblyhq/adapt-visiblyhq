@@ -71,14 +71,15 @@ class VisArticles extends Backbone.Controller {
   }
 
   articlePostRender(articleView) {
-    var type = articleView.model.get("_visType");
-    if (type === "presentation") {
-      articleView.$el.on("inview", this._onArticleInView);
-    }
+    articleView.$el.on(
+      "inview",
+      { articleModel: articleView.model },
+      this._onArticleInView
+    );
   }
 
   _onArticleInView(event, visible) {
-    if (visible) {
+    if (!event.data.articleModel.get("_vis")?._resources?.length && visible) {
       $(".vistopnavbar_book_button").css({ opacity: "0.25" });
     }
   }

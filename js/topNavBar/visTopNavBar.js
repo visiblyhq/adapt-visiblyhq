@@ -1,6 +1,6 @@
 import Adapt from "core/js/adapt";
 import NavigationButtonModel from "core/js/models/NavigationButtonModel";
-import VisTopNavBarBackToContentButtonView from "./visTopNavBarBackToContentButtonView";
+import VisTopNavBarBackToContentButtonView from "./visTopNavBarResourcesButtonView";
 import VisTopNavBarProgressBarView from "./visTopNavBarProgressBarView";
 import VisTopNavBarQuitButtonView from "./visTopNavBarQuitButtonView";
 import navigation from "core/js/navigation";
