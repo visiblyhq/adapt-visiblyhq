@@ -21,7 +21,7 @@ export default function ResourcesOverlay(props) {
           </button>
           <div
             className="vistopnavbar__button-wrapper vistopnavbar_book_button"
-            style={{ margin: 25, float: "right" }}
+            style={{ margin: 25, float: "right", opacity: 1 }}
             onClick={props.onCloseClick}
           >
             <svg

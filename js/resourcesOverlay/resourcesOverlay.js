@@ -58,6 +58,8 @@ class ResourcesOverlay extends Backbone.Controller {
       },
       showBackButton: articleToNavigateTo ? true : false,
       onBackClick: () => {
+        event.currentArticle.set("_skipPoint", true);
+        $(".vistopnavbar_book_button").css({ opacity: "0.25" });
         Router.navigateToElement(articleToNavigateTo.get("_id"), {
           replace: true,
         });

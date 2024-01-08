@@ -79,8 +79,10 @@ class VisArticles extends Backbone.Controller {
   }
 
   _onArticleInView(event, visible) {
-    if (!event.data.articleModel.get("_vis")?._resources?.length && visible) {
-      $(".vistopnavbar_book_button").css({ opacity: "0.25" });
+    if (visible) {
+      if (event.data.articleModel.get("_vis")?._resources?.length) {
+        $(".vistopnavbar_book_button").css({ opacity: "unset" });
+      }
     }
   }
 
@@ -112,18 +114,25 @@ class VisArticles extends Backbone.Controller {
       data: {
         text: isLastArticle ? "Finish" : "Continue",
         onClick: () => {
-          $(".vistopnavbar_book_button").css({ opacity: "unset" });
+          $(".vistopnavbar_book_button").css({ opacity: "0.25" });
+          var children = parentArticle.getSiblings()?.models;
+          var restorePointArticle = children.filter((el) =>
+            el.get("_skipPoint")
+          );
+          if (restorePointArticle.length != 0) {
+            restorePointArticle[0].set("_skipPoint", undefined);
+            this._navigateToArticle(parentArticle, restorePointArticle[0]);
+            return;
+          }
+
           if (isLastArticle) {
             AdaptExitChannel.postMessage("finish_button_clicked");
             return;
           }
-          parentArticle.set("_current", false);
-          var children = parentArticle.getSiblings()?.models;
           var nextArticle = children.filter(
             (el) => el.get("_id") === parentArticle.get("_next")
           )[0];
-          nextArticle.set("_current", true);
-          Router.navigateToElement(nextArticle.get("_id"));
+          this._navigateToArticle(parentArticle, nextArticle);
         },
       },
     });
@@ -146,6 +155,12 @@ class VisArticles extends Backbone.Controller {
     ) {
       parentArticle.bottomButtonView.disable();
     }
+  }
+
+  _navigateToArticle(currentArticle, nextArticle) {
+    currentArticle.set("_current", false);
+    nextArticle.set("_current", true);
+    Router.navigateToElement(nextArticle.get("_id"));
   }
 }
 
