@@ -50,6 +50,23 @@
                         },
                         "help": "The type of the reference material"
                       },
+                      "_textComponent": {
+                        "type": "object",
+                        "required": false,
+                        "legend": "Text",
+                        "properties": {
+                          "text": {
+                            "type": "string",
+                            "required": false,
+                            "default": "",
+                            "title": "Text",
+                            "inputType": "TextArea",
+                            "validators": [],
+                            "help": "Text block",
+                            "translatable": true
+                          }
+                        }
+                      },
                       "_imageComponent": {
                         "type": "object",
                         "required": false,
@@ -87,23 +104,6 @@
                             "inputType": "Text",
                             "validators": [],
                             "help": "Text to be displayed as an attribution",
-                            "translatable": true
-                          }
-                        }
-                      },
-                      "_textComponent": {
-                        "type": "object",
-                        "required": false,
-                        "legend": "Text",
-                        "properties": {
-                          "text": {
-                            "type": "string",
-                            "required": false,
-                            "default": "",
-                            "title": "Text",
-                            "inputType": "TextArea",
-                            "validators": [],
-                            "help": "Text block",
                             "translatable": true
                           }
                         }
@@ -235,6 +235,14 @@
                               }
                             }
                           },
+                          "_useClosedCaptions": {
+                            "type": "boolean",
+                            "required": false,
+                            "default": false,
+                            "title": "Use Closed Captions",
+                            "inputType": "Checkbox",
+                            "validators": []
+                          },
                           "_setCompletionOn": {
                             "type": "string",
                             "required": true,
@@ -257,14 +265,6 @@
                               "required"
                             ],
                             "help": "Defines what media event should trigger completion of this component."
-                          },
-                          "_useClosedCaptions": {
-                            "type": "boolean",
-                            "required": false,
-                            "default": false,
-                            "title": "Use Closed Captions",
-                            "inputType": "Checkbox",
-                            "validators": []
                           },
                           "_startLanguage": {
                             "type": "string",

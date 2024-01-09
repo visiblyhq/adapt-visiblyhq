@@ -78,13 +78,14 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
 
     const data = {
       onCloseClick: () => {
-        this.allowHide = true;
         this.hide(articleId);
       },
       showBackButton: articleToNavigateTo ? true : false,
       onBackClick: () => {
         event.currentArticle.set("_skipPoint", true);
         $(".vistopnavbar_book_button").css({ opacity: "0.25" });
+
+        this.hide(articleId);
         Router.navigateToElement(articleToNavigateTo.get("_id"), {
           replace: true,
         });
@@ -101,6 +102,7 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
   }
 
   hide(articleId) {
+    this.allowHide = true;
     $(`#reference-material-overlay__${articleId}`).css({ display: "none" });
   }
 

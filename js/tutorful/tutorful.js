@@ -107,6 +107,7 @@ class Tutorful extends Backbone.Controller {
 
     data.onContinue = () => {
       if (!isLastArticle) {
+        $(".vistopnavbar_book_button").css({ opacity: "0.25" });
         var parentBlockModel = tutorfulView.parentView.model._parentModel;
         var currentArticle = parentBlockModel._parentModel;
 
