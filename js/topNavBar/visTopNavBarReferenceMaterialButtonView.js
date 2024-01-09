@@ -1,8 +1,7 @@
 import NavigationButtonView from "core/js/views/NavigationButtonView";
-import Router from "core/js/router";
 import Adapt from "core/js/adapt";
 
-export default class VisTopNavBarResourcesButtonView extends NavigationButtonView {
+export default class VisTopNavBarReferenceMaterialButtonView extends NavigationButtonView {
   events() {
     return {
       click: "onClicked",
@@ -18,7 +17,7 @@ export default class VisTopNavBarResourcesButtonView extends NavigationButtonVie
   }
 
   static get template() {
-    return "visTopNavBarResourcesButton.jsx";
+    return "visTopNavBarReferenceMaterialButton.jsx";
   }
 
   initialize(options) {
@@ -31,11 +30,11 @@ export default class VisTopNavBarResourcesButtonView extends NavigationButtonVie
     var children = this.pageModel.getChildren()?.models;
 
     var currentArticle = children.filter((el) => el.get("_current"))[0];
-    if (!currentArticle.get("_vis")?._resources.length) {
+    if (!currentArticle.get("_vis")?._referenceMaterials.length) {
       return;
     }
 
-    Adapt.trigger("resourcesOverlay:show", {
+    Adapt.trigger("referenceMaterialOverlay:show", {
       children: children,
       currentArticle: currentArticle,
     });

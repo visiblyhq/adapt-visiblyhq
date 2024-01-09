@@ -1,6 +1,6 @@
 import Adapt from "core/js/adapt";
 import NavigationButtonModel from "core/js/models/NavigationButtonModel";
-import VisTopNavBarBackToContentButtonView from "./visTopNavBarResourcesButtonView";
+import VisTopNavBarReferenceMaterialButtonView from "./visTopNavBarReferenceMaterialButtonView";
 import VisTopNavBarProgressBarView from "./visTopNavBarProgressBarView";
 import VisTopNavBarQuitButtonView from "./visTopNavBarQuitButtonView";
 import navigation from "core/js/navigation";
@@ -81,7 +81,7 @@ class VisTopNavBar extends Backbone.Controller {
     if (pageModel.get("_type") === "course") return;
 
     this.addQuitButton(pageModel);
-    this.addBackToContentButton(pageModel);
+    this.addReferenceMaterialButton(pageModel);
 
     this.addProgressBar(pageModel);
   }
@@ -101,15 +101,15 @@ class VisTopNavBar extends Backbone.Controller {
     );
   }
 
-  addBackToContentButton(pageModel) {
+  addReferenceMaterialButton(pageModel) {
     const model = new NavigationButtonModel({
-      _id: "vistopnavbar_back_to_content",
+      _id: "vistopnavbar_reference-material",
       _order: 50,
       _classes: "vistopnavbar__item",
     });
 
     navigation.addButton(
-      new VisTopNavBarBackToContentButtonView({
+      new VisTopNavBarReferenceMaterialButtonView({
         model,
         pageModel,
       })

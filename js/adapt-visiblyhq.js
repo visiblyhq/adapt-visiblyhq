@@ -4,7 +4,7 @@ import QuestionViews from "./questionViews/questionViews";
 import Tutorful from "./tutorful/tutorful";
 import VisArticles from "./articles/visArticles";
 import VisTopNavBar from "./topNavBar/visTopNavBar";
-import ResourcesOverlay from "./resourcesOverlay/resourcesOverlay";
+import ReferenceMaterialOverlay from "./referenceMaterialOverlay/referenceMaterialOverlay";
 
 class VisController extends Backbone.Controller {
   initialize() {
@@ -17,8 +17,8 @@ class VisController extends Backbone.Controller {
     this.visArticles.initialize();
     this.tutorful = Tutorful.getInstance();
     this.visTopNavBar = VisTopNavBar.getInstance();
-    this.resourcesOverlay = ResourcesOverlay.getInstance();
-    this.resourcesOverlay.initialize();
+    this.referenceMaterialOverlay = ReferenceMaterialOverlay.getInstance();
+    this.referenceMaterialOverlay.initialize();
   }
 
   onLanguageChange() {

@@ -1,11 +1,11 @@
 import React from "react";
 import { templates } from "core/js/reactHelpers";
 
-export default function ResourcesOverlay(props) {
+export default function ReferenceMaterialOverlay(props) {
   return (
     <React.Fragment>
-      <div class="resources__overlay__container">
-        <div class="resources__overlay__nav-bar">
+      <div class="reference-material-overlay__container">
+        <div class="reference-material-overlay__nav-bar">
           <button
             class="vis-bottom-button"
             style={{
@@ -40,20 +40,22 @@ export default function ResourcesOverlay(props) {
           </div>
         </div>
         <div style={{ padding: "0px 25px" }}>
-          {props.resources.map((element) => {
+          {props.referenceMaterials.map((element) => {
             switch (element.type) {
               case "text":
                 return (
                   <p
                     style={{ paddingBottom: 25 }}
-                    dangerouslySetInnerHTML={{ __html: element.text }}
+                    dangerouslySetInnerHTML={{
+                      __html: element._textComponent.text,
+                    }}
                   ></p>
                 );
               case "image":
                 return (
                   <div style={{ paddingBottom: 25 }}>
                     <templates.image
-                      {...element._graphic}
+                      {...element._imageComponent}
                       aria-hidden={true}
                       id={`graphic__scroll__container__test`}
                       longDescriptionId={`graphic__longdescription__test`}
@@ -61,6 +63,13 @@ export default function ResourcesOverlay(props) {
                       classNamePrefixes={["component", "graphic"]}
                     />
                   </div>
+                );
+              case "video":
+                return (
+                  <div
+                    class={`video-material__${element._videoComponent.index}`}
+                    style={{ paddingBottom: 25 }}
+                  />
                 );
             }
           })}

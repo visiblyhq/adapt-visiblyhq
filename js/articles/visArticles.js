@@ -80,14 +80,17 @@ class VisArticles extends Backbone.Controller {
 
   _onArticleInView(event, visible) {
     if (visible) {
-      if (event.data.articleModel.get("_vis")?._resources?.length) {
+      if (event.data.articleModel.get("_vis")?._referenceMaterials?.length) {
         $(".vistopnavbar_book_button").css({ opacity: "unset" });
       }
     }
   }
 
   addBottomButton(component) {
-    var parentArticle = component.model._parentModel._parentModel;
+    var parentArticle = component.model._parentModel?._parentModel;
+    if (!parentArticle) {
+      return;
+    }
     var articleType = parentArticle.get("_visType");
 
     //add margin to bottom of last article to make sure that content isn't covered
