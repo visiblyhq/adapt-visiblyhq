@@ -1,5 +1,6 @@
 import NavigationButtonView from "core/js/views/NavigationButtonView";
 import Adapt from "core/js/adapt";
+import { isBookButtonAvailable } from "../utils";
 
 export default class VisTopNavBarReferenceMaterialButtonView extends NavigationButtonView {
   events() {
@@ -30,7 +31,7 @@ export default class VisTopNavBarReferenceMaterialButtonView extends NavigationB
     var children = this.pageModel.getChildren()?.models;
 
     var currentArticle = children.filter((el) => el.get("_current"))[0];
-    if (!currentArticle.get("_vis")?._referenceMaterials.length) {
+    if (!isBookButtonAvailable(children, currentArticle)) {
       return;
     }
 

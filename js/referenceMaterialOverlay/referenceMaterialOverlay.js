@@ -2,9 +2,9 @@ import Adapt from "core/js/adapt";
 import { templates } from "core/js/reactHelpers";
 import ReactDOM from "react-dom";
 import React from "react";
-import Router from "core/js/router";
 import MediaView from "components/adapt-contrib-media/js/mediaView";
 import ComponentModel from "core/js/models/componentModel";
+import { navigateToArticle } from "../utils";
 
 class ReferenceMaterialOverlay extends Backbone.Controller {
   static getInstance() {
@@ -34,6 +34,7 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
       }
       return;
     }
+
     const Template = templates[this.template()];
     var articleElement = document.getElementsByClassName(articleId)[0];
     const referenceMaterialOverlayDiv = document.createElement("div");
@@ -58,9 +59,11 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
       articleToNavigateTo = previousArticle;
     }
 
-    var videoMaterials = event.currentArticle
-      .get("_vis")
-      ._referenceMaterials.filter((element) => element.type === "video");
+    var videoMaterials =
+      event.currentArticle
+        .get("_vis")
+        ?._referenceMaterials?.filter((element) => element.type === "video") ??
+      [];
 
     for (let index = 0; index < videoMaterials.length; index++) {
       const element = videoMaterials[index];
@@ -83,14 +86,14 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
       showBackButton: articleToNavigateTo ? true : false,
       onBackClick: () => {
         event.currentArticle.set("_skipPoint", true);
+
         $(".vistopnavbar_book_button").css({ opacity: "0.25" });
 
         this.hide(articleId);
-        Router.navigateToElement(articleToNavigateTo.get("_id"), {
-          replace: true,
-        });
+        navigateToArticle(event.currentArticle, articleToNavigateTo);
       },
-      referenceMaterials: event.currentArticle.get("_vis")._referenceMaterials,
+      referenceMaterials:
+        event.currentArticle.get("_vis")?._referenceMaterials ?? [],
     };
     ReactDOM.render(<Template {...data} />, referenceMaterialOverlayDiv);
 
