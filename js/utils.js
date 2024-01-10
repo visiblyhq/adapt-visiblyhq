@@ -14,8 +14,9 @@ export const isBookButtonAvailable = (articles, currentArticle) => {
   } catch (BreakException) {}
 
   return (
-    currentArticle.get("_vis")?._referenceMaterials?.length ||
-    hasPresentationArticle
+    (currentArticle.get("_vis")?._referenceMaterials?.length ||
+      hasPresentationArticle) &&
+    currentArticle.get("_visType") !== "presentation"
   );
 };
 
