@@ -68,7 +68,7 @@ export default function ReferenceMaterialOverlay(props) {
                 return (
                   <div
                     class={`video-material__${element._videoComponent.index}`}
-                    style={{ paddingBottom: 25 }}
+                    style={{ paddingBottom: 25, zIndex: 82 }}
                   />
                 );
             }
