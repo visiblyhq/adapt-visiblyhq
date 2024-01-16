@@ -83,6 +83,7 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
       onCloseClick: () => {
         this.hide(articleId);
       },
+      backButtonText: this._getBackButtonText(articleToNavigateTo),
       showBackButton: articleToNavigateTo ? true : false,
       onBackClick: () => {
         event.currentArticle.set("_skipPoint", true);
@@ -111,6 +112,26 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
 
   template() {
     return "referenceMaterialOverlay";
+  }
+
+  _getBackButtonText(presentationArticle) {
+    var components = presentationArticle
+      .getAllDescendantModels()
+      .filter((element) => element.get("_type") === "component");
+
+    var isVideo = components.some(
+      (element) => element.get("_component") === "media"
+    );
+    if (isVideo) {
+      return "Back to video";
+    }
+    var isImage = components.some(
+      (element) => element.get("_component") === "graphic"
+    );
+    if (isImage) {
+      return "Back to image";
+    }
+    return "Back to presentation";
   }
 }
 
