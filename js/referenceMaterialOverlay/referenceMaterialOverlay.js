@@ -123,15 +123,15 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
       (element) => element.get("_component") === "media"
     );
     if (isVideo) {
-      return "Back to video";
+      return "Watch video again";
     }
     var isImage = components.some(
       (element) => element.get("_component") === "graphic"
     );
     if (isImage) {
-      return "Back to image";
+      return "View image again";
     }
-    return "Back to presentation";
+    return "View presentation again";
   }
 }
 
