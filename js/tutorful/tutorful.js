@@ -2,7 +2,7 @@ import Adapt from "core/js/adapt";
 import { templates } from "core/js/reactHelpers";
 import ReactDOM from "react-dom";
 import React from "react";
-import Router from "core/js/router";
+import { navigateToArticle } from "../utils";
 
 class Tutorful extends Backbone.Controller {
   static getInstance() {
@@ -107,6 +107,7 @@ class Tutorful extends Backbone.Controller {
 
     data.onContinue = () => {
       if (!isLastArticle) {
+        $(".vistopnavbar_book_button").css({ opacity: "0.25" });
         var parentBlockModel = tutorfulView.parentView.model._parentModel;
         var currentArticle = parentBlockModel._parentModel;
 
@@ -115,10 +116,7 @@ class Tutorful extends Backbone.Controller {
           .find((el) => el.get("_id") === currentArticle.get("_next"));
 
         if (nextArticle) {
-          currentArticle.set("_current", false);
-          nextArticle.set("_current", true);
-
-          Router.navigateToElement(nextArticle.get("_id"));
+          navigateToArticle(currentArticle, nextArticle);
         }
         return;
       }
