@@ -28,6 +28,29 @@
                   "validators": [],
                   "help": "Set whether this is a presentation component"
                 },
+                "_primaryContentType": {
+                  "type": "string",
+                  "required": false,
+                  "enum": [
+                    "auto-detect",
+                    "video",
+                    "image",
+                    "text"
+                  ],
+                  "default": "auto-detect",
+                  "title": "Primary content type",
+                  "inputType": {
+                    "type": "Select",
+                    "options": [
+                      "auto-detect",
+                      "video",
+                      "image",
+                      "text"
+                    ]
+                  },
+                  "validators": [],
+                  "help": "Defines the main content type of this component. This must be set if the component is of type presentation."
+                },
                 "_referenceMaterials": {
                   "type": "array",
                   "required": false,
