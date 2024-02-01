@@ -115,23 +115,41 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
   }
 
   _getBackButtonText(presentationArticle) {
-    var components = presentationArticle
-      .getAllDescendantModels()
-      .filter((element) => element.get("_type") === "component");
+    var primaryContentType = presentationArticle.get("_vis")["_primaryContentType"];
 
-    var isVideo = components.some(
-      (element) => element.get("_component") === "media"
-    );
-    if (isVideo) {
-      return "Watch video again";
+    var videoMessage = "Watch video again";
+    var imageMessage = "View image again";
+    var presentationMessage = "View presentation again";
+
+    if (primaryContentType !== "auto-detect") {
+      switch (primaryContentType) {
+        case "video":
+          return videoMessage;
+        case "image":
+          return imageMessage;
+        case "text":
+          return presentationMessage;
+      }
     }
-    var isImage = components.some(
-      (element) => element.get("_component") === "graphic"
-    );
-    if (isImage) {
-      return "View image again";
+    else {
+      var components = presentationArticle
+        .getAllDescendantModels()
+        .filter((element) => element.get("_type") === "component");
+
+      var isVideo = components.some(
+        (element) => element.get("_component") === "media"
+      );
+      if (isVideo) {
+        return videoMessage;
+      }
+      var isImage = components.some(
+        (element) => element.get("_component") === "graphic"
+      );
+      if (isImage) {
+        return imageMessage;
+      }
+      return presentationMessage;
     }
-    return "View presentation again";
   }
 }
 
