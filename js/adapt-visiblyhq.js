@@ -12,13 +12,17 @@ class VisController extends Backbone.Controller {
       "app:languageChanged": this.onLanguageChange,
     });
     this.questionViews = QuestionViews.getInstance();
-    this.questionViews.initialize();
     this.visArticles = VisArticles.getInstance();
-    this.visArticles.initialize();
     this.tutorful = Tutorful.getInstance();
     this.visTopNavBar = VisTopNavBar.getInstance();
     this.referenceMaterialOverlay = ReferenceMaterialOverlay.getInstance();
-    this.referenceMaterialOverlay.initialize();
+    const channel = new BroadcastChannel("DeviceBroadcastChannel");
+    channel.onmessage = (event) => {
+      var split = event.data.split(":");
+      if (split[0] === "rotated") {
+        Adapt.trigger("device:rotated", split[1]);
+      }
+    };
   }
 
   onLanguageChange() {

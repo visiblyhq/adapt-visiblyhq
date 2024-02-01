@@ -16,6 +16,7 @@ class VisArticles extends Backbone.Controller {
       "pageView:postRender": this.updateArticleAttributes,
       "componentView:postRender": this.addBottomButton,
       "articleView:postRender": this.articlePostRender,
+      "device:rotated": this._onDeviceRotated,
     });
   }
 
@@ -81,6 +82,50 @@ class VisArticles extends Backbone.Controller {
     );
   }
 
+  _onDeviceRotated(orientation) {
+    var images = $(".article__container").find(".enlarged__image");
+    if (images.length > 0) {
+      images.each((index) => {
+        var element = images[index];
+        switch (orientation) {
+          case "landscapeLeft":
+            $(element).css({
+              "max-width": "100vh",
+              "max-height": "100vw",
+              transform:
+                "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)) rotate(90deg)",
+            });
+            break;
+          case "portraitDown":
+            $(element).css({
+              "max-width": "100vw",
+              "max-height": "100vh",
+              transform:
+                "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)) rotate(180deg)",
+            });
+            break;
+          case "landscapeRight":
+            $(element).css({
+              "max-width": "100vh",
+              "max-height": "100vw",
+              transform:
+                "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)) rotate(270deg)",
+            });
+            break;
+          case "portraitUp":
+          default:
+            $(element).css({
+              "max-width": "100vw",
+              "max-height": "100vh",
+              transform:
+                "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%))",
+            });
+            break;
+        }
+      });
+    }
+  }
+
   _onArticleInView(event, visible) {
     if (visible) {
       if (isBookButtonAvailable(event.data.articles, event.data.articleModel)) {
@@ -89,8 +134,8 @@ class VisArticles extends Backbone.Controller {
     }
   }
 
-  addBottomButton(component) {
-    var parentArticle = component.model._parentModel?._parentModel;
+  addBottomButton(componentView) {
+    var parentArticle = componentView.model._parentModel?._parentModel;
     if (!parentArticle) {
       return;
     }

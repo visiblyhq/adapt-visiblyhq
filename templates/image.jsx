@@ -29,7 +29,7 @@ export default function Image(props) {
     props.attributionClassNamePrefixes || props.classNamePrefixes;
 
   const id = generateId();
-  const isLandscape = props.orientation == "landscape";
+
   return (
     <>
       {!props.isEnlargedDisabled ? (
@@ -82,7 +82,10 @@ export default function Image(props) {
             ])}
           >
             <img
-              className={prefixClasses(props.classNamePrefixes, ["__image"])}
+              className={prefixClasses(
+                [...props.classNamePrefixes, "enlarged"],
+                ["__image"]
+              )}
               src={src}
               aria-label={a11y.normalize(props.alt)}
               aria-hidden={!props.alt}
@@ -91,15 +94,14 @@ export default function Image(props) {
                 props.longdescription ? props.longDescriptionId : undefined
               }
               style={{
-                maxWidth: isLandscape ? "100vh" : "100vw",
-                maxHeight: isLandscape ? "100vw" : "100vh",
-                transform: isLandscape
-                  ? "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)) rotate(90deg)"
-                  : "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%))",
+                maxWidth: "100vw",
+                maxHeight: "100vh",
+                transform:
+                  "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%))",
                 borderRadius: 0,
+                objectFit: "contain",
               }}
             />
-
             {props.attribution && (
               <span
                 className={prefixClasses(attributionClassNamePrefixes, [
