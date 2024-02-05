@@ -25,3 +25,9 @@ export const navigateToArticle = (currentArticle, nextArticle) => {
   nextArticle.set("_current", true);
   router.navigateToElement(nextArticle.get("_id"));
 };
+
+let imageCounter = 0;
+
+export const getUniqueInt = () => {
+  return ++imageCounter;
+};

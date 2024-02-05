@@ -16,7 +16,9 @@ class VisArticles extends Backbone.Controller {
       "pageView:postRender": this.updateArticleAttributes,
       "componentView:postRender": this.addBottomButton,
       "articleView:postRender": this.articlePostRender,
+      "device:rotated": this._onDeviceRotated,
     });
+    $("body").addClass("orientation-portraitUp");
   }
 
   updateArticleAttributes(page) {
@@ -81,6 +83,13 @@ class VisArticles extends Backbone.Controller {
     );
   }
 
+  _onDeviceRotated(orientation) {
+    $("body").removeClass(function (index, className) {
+      return (className.match(/\borientation-\S+/g) || []).join(" ");
+    });
+    $("body").addClass(`orientation-${orientation}`);
+  }
+
   _onArticleInView(event, visible) {
     if (visible) {
       if (isBookButtonAvailable(event.data.articles, event.data.articleModel)) {
@@ -89,8 +98,8 @@ class VisArticles extends Backbone.Controller {
     }
   }
 
-  addBottomButton(component) {
-    var parentArticle = component.model._parentModel?._parentModel;
+  addBottomButton(componentView) {
+    var parentArticle = componentView.model._parentModel?._parentModel;
     if (!parentArticle) {
       return;
     }

@@ -104,16 +104,13 @@ export default function Gmcq(props) {
                 data-adapt-index={_index}
               >
                 <div style={{ marginTop: "100%" }}></div>
-                <div
-                  className="gmcq-item__img__wrapper__outer"
-                >
-                  <div
-                    className="gmcq-item__img__wrapper__inner"
-                  >
+                <div className="gmcq-item__img__wrapper__outer">
+                  <div className="gmcq-item__img__wrapper__inner">
                     <templates.image
                       {..._graphic}
                       classNamePrefixes={["gmcq-item"]}
                       attributionClassNamePrefixes={["component", "gmcq"]}
+                      isEnlargedDisabled={true}
                     />
                   </div>
                 </div>

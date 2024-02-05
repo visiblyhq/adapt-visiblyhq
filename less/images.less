@@ -1,0 +1,36 @@
+body.orientation-portraitUp .article__container .enlarged__image {
+  max-width: 100vw;
+  max-height: 100vh;
+  transform: translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%));
+}
+
+body.orientation-landscapeLeft .article__container .enlarged__image {
+  max-width: 100vh;
+  max-height: 100vw;
+  transform: translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%))
+    rotate(90deg);
+}
+
+body.orientation-portraitDown .article__container .enlarged__image {
+  max-width: 100vw;
+  max-height: 100vh;
+  transform: translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%))
+    rotate(180deg);
+}
+
+body.orientation-landscapeRight .article__container .enlarged__image {
+  max-width: 100vh;
+  max-height: 100vw;
+  transform: translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%))
+    rotate(270deg);
+}
+
+.enlarged__image__wrapper {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 84;
+  left: 0;
+}
