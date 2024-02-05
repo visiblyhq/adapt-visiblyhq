@@ -18,6 +18,7 @@ class VisArticles extends Backbone.Controller {
       "articleView:postRender": this.articlePostRender,
       "device:rotated": this._onDeviceRotated,
     });
+    $("body").addClass("orientation-portraitUp");
   }
 
   updateArticleAttributes(page) {
@@ -83,47 +84,10 @@ class VisArticles extends Backbone.Controller {
   }
 
   _onDeviceRotated(orientation) {
-    var images = $(".article__container").find(".enlarged__image");
-    if (images.length > 0) {
-      images.each((index) => {
-        var element = images[index];
-        switch (orientation) {
-          case "landscapeLeft":
-            $(element).css({
-              "max-width": "100vh",
-              "max-height": "100vw",
-              transform:
-                "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)) rotate(90deg)",
-            });
-            break;
-          case "portraitDown":
-            $(element).css({
-              "max-width": "100vw",
-              "max-height": "100vh",
-              transform:
-                "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)) rotate(180deg)",
-            });
-            break;
-          case "landscapeRight":
-            $(element).css({
-              "max-width": "100vh",
-              "max-height": "100vw",
-              transform:
-                "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)) rotate(270deg)",
-            });
-            break;
-          case "portraitUp":
-          default:
-            $(element).css({
-              "max-width": "100vw",
-              "max-height": "100vh",
-              transform:
-                "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%))",
-            });
-            break;
-        }
-      });
-    }
+    $("body").removeClass(function (index, className) {
+      return (className.match(/\borientation-\S+/g) || []).join(" ");
+    });
+    $("body").addClass(`orientation-${orientation}`);
   }
 
   _onArticleInView(event, visible) {

@@ -2,7 +2,7 @@ import device from "core/js/device";
 import a11y from "core/js/a11y";
 import React from "react";
 import { classes, prefixClasses } from "core/js/reactHelpers";
-import { imageCounter, incrementCounter } from "../js/utils";
+import { imageCounter, getUniqueInt } from "../js/utils";
 /**
  * Size switching content image
  * @param {Object} props
@@ -28,23 +28,15 @@ export default function Image(props) {
   const attributionClassNamePrefixes =
     props.attributionClassNamePrefixes || props.classNamePrefixes;
 
-  const id = generateId();
+  const id = `${getUniqueInt()}`;
 
   return (
     <>
       {!props.isEnlargedDisabled ? (
         <div
           id={`enlarged_image_${id}`}
-          style={{
-            backgroundColor: "black",
-            display: "none",
-            width: "100vw",
-            height: "100vh",
-            position: "fixed",
-            top: 0,
-            zIndex: 84,
-            left: 0,
-          }}
+          className=" enlarged__image__wrapper"
+          style={{ display: "none" }}
         >
           <div
             className="vistopnavbar__button-wrapper"
@@ -94,10 +86,6 @@ export default function Image(props) {
                 props.longdescription ? props.longDescriptionId : undefined
               }
               style={{
-                maxWidth: "100vw",
-                maxHeight: "100vh",
-                transform:
-                  "translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%))",
                 borderRadius: 0,
                 objectFit: "contain",
               }}
@@ -168,8 +156,3 @@ export default function Image(props) {
     </>
   );
 }
-
-const generateId = () => {
-  incrementCounter();
-  return `${imageCounter}`;
-};
