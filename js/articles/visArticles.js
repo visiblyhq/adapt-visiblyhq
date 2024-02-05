@@ -60,6 +60,9 @@ class VisArticles extends Backbone.Controller {
 
     if (!this.articles.find((el) => el.get("_current"))) {
       this.articles[0].set("_current", true);
+      $(`div[data-adapt-id="${this.articles[0].get("_id")}"]`).css({
+        display: "block",
+      });
     }
 
     this.articles[this.articles.length - 1].set("_last", true);
