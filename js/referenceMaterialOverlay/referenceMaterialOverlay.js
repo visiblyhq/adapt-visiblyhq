@@ -115,7 +115,7 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
   }
 
   _getBackButtonText(presentationArticle) {
-    var primaryContentType = presentationArticle.get("_vis")["_primaryContentType"];
+    var primaryContentType = presentationArticle.get("_vis")["_primaryContentType"] ?? "auto-detect";
 
     var videoMessage = "Watch video again";
     var imageMessage = "View image again";
