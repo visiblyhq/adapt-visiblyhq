@@ -23,7 +23,13 @@ export const isBookButtonAvailable = (articles, currentArticle) => {
 export const navigateToArticle = (currentArticle, nextArticle) => {
   currentArticle.set("_current", false);
   nextArticle.set("_current", true);
-  router.navigateToElement(nextArticle.get("_id"));
+  $(`div[data-adapt-id="${currentArticle.get("_id")}"]`).css({
+    display: "none",
+  });
+
+  $(`div[data-adapt-id="${nextArticle.get("_id")}"]`).css({
+    display: "block",
+  });
 };
 
 let imageCounter = 0;
