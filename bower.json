@@ -1,6 +1,6 @@
 {
   "name": "adapt-visiblyhq",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "framework": ">=5.24.4",
   "extension": "vis",
   "displayName": "VisiblyHQ",
