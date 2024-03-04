@@ -21,7 +21,7 @@ class VisArticles extends Backbone.Controller {
     });
     $("body").addClass("orientation-portraitUp");
   }
-
+  
   onChildAddedToPage(parentView, childView) {
     if (
       parentView.model.get("_type") === "page" &&
@@ -72,9 +72,6 @@ class VisArticles extends Backbone.Controller {
 
     if (!this.articles.find((el) => el.get("_current"))) {
       this.articles[0].set("_current", true);
-      $(`div[data-adapt-id="${this.articles[0].get("_id")}"]`).css({
-        display: "block",
-      });
     }
 
     this.articles[this.articles.length - 1].set("_last", true);
@@ -94,6 +91,12 @@ class VisArticles extends Backbone.Controller {
       { articleModel: articleView.model, articles: this.articles },
       this._onArticleInView
     );
+
+    if (articleView.model.get("_current")) {
+      $(`div[data-adapt-id="${this.articles[0].get("_id")}"]`).css({
+        display: "block",
+      });
+    }
   }
 
   _onDeviceRotated(orientation) {
