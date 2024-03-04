@@ -1,5 +1,3 @@
-import router from "core/js/router";
-
 export const isBookButtonAvailable = (articles, currentArticle) => {
   let hasPresentationArticle = false;
   try {

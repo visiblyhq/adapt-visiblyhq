@@ -17,8 +17,18 @@ class VisArticles extends Backbone.Controller {
       "componentView:postRender": this.addBottomButton,
       "articleView:postRender": this.articlePostRender,
       "device:rotated": this._onDeviceRotated,
+      "blockView:childAdded": this.onChildAddedToPage,
     });
     $("body").addClass("orientation-portraitUp");
+  }
+
+  onChildAddedToPage(parentView, childView) {
+    if (
+      parentView.model.get("_type") === "page" &&
+      childView.model.get("_type") === "block"
+    ) {
+      $(`div[data-adapt-id="${childView.model.get("_id")}"]`).remove();
+    }
   }
 
   updateArticleAttributes(page) {
