@@ -111,6 +111,21 @@ class VisArticles extends Backbone.Controller {
       if (isBookButtonAvailable(event.data.articles, event.data.articleModel)) {
         $(".vistopnavbar_book_button").css({ opacity: "unset" });
       }
+      var componentTypes = event.data.articleModel
+        .getAllDescendantModels()
+        .filter((el) => el.get("_type") == "component")
+        .map((el) => el.get("_component"));
+        
+      var hasQuestion = false;
+      componentTypes.forEach((element) => {
+        if (VisArticles.questionBlockTypes.includes(element)) {
+          hasQuestion = true;
+        }
+      });
+
+      if (!hasQuestion) {
+        event.data.articleModel.setCompletionStatus();
+      }
     }
   }
 
