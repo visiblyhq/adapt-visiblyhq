@@ -21,7 +21,7 @@ class VisArticles extends Backbone.Controller {
     });
     $("body").addClass("orientation-portraitUp");
   }
-  
+
   onChildAddedToPage(parentView, childView) {
     if (
       parentView.model.get("_type") === "page" &&
@@ -115,7 +115,7 @@ class VisArticles extends Backbone.Controller {
   }
 
   addBottomButton(componentView) {
-    var parentArticle = componentView.model._parentModel?._parentModel;
+    var parentArticle = componentView.model.getParent().getParent();
     if (!parentArticle) {
       return;
     }
