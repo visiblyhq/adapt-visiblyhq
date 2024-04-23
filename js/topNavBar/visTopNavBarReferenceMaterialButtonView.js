@@ -28,6 +28,12 @@ export default class VisTopNavBarReferenceMaterialButtonView extends NavigationB
   }
 
   onClicked(event) {
+    try {
+      AdaptEventTrackingChannel?.postMessage('reference_material_button');
+    } catch (error) {
+      console.log('Caught notification channel error');
+    }
+    
     var children = this.pageModel.getChildren()?.models;
 
     var currentArticle = children.filter((el) => el.get("_current"))[0];

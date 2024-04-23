@@ -26,6 +26,12 @@ export default class VisTopNavBarQuitButtonView extends NavigationButtonView {
   }
 
   onClicked(event) {
+    try {
+      AdaptEventTrackingChannel?.postMessage('quit_button');
+    } catch (error) {
+      console.log('Caught notification channel error');
+    }
+    
     //would be good to update this but will need to do it in app
     AdaptExitChannel.postMessage("menu_button_clicked");
   }

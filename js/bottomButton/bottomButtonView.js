@@ -41,6 +41,12 @@ class BottomButtonView extends ButtonsView {
   }
 
   onMyButtonClick(event) {
+    try {
+      AdaptEventTrackingChannel?.postMessage("bottom_button_click");
+    } catch (error) {
+      console.log('Caught notification channel error');
+    }
+    
     if (this.data.text === "Submit") {
       super.onActionClicked();
     }
