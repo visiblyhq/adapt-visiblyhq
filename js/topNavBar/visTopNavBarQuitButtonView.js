@@ -1,4 +1,5 @@
 import NavigationButtonView from "core/js/views/NavigationButtonView";
+import Adapt from "core/js/adapt";
 
 export default class VisTopNavBarQuitButtonView extends NavigationButtonView {
   events() {
@@ -26,11 +27,7 @@ export default class VisTopNavBarQuitButtonView extends NavigationButtonView {
   }
 
   onClicked(event) {
-    try {
-      AdaptEventTrackingChannel?.postMessage('quit_button');
-    } catch (error) {
-      console.log('Caught notification channel error');
-    }
+    Adapt.trigger("visibly:event", "topNavBar.quitButton.click");
     
     //would be good to update this but will need to do it in app
     AdaptExitChannel.postMessage("menu_button_clicked");

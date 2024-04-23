@@ -3,6 +3,7 @@ import Backbone from "backbone";
 import QuestionViews from "./questionViews/questionViews";
 import Tutorful from "./tutorful/tutorful";
 import VisArticles from "./articles/visArticles";
+import VisInteractionEvents from "./interactionEvents/visInteractionEvents";
 import VisTopNavBar from "./topNavBar/visTopNavBar";
 import ReferenceMaterialOverlay from "./referenceMaterialOverlay/referenceMaterialOverlay";
 
@@ -11,6 +12,7 @@ class VisController extends Backbone.Controller {
     this.listenTo(Adapt, {
       "app:languageChanged": this.onLanguageChange,
     });
+    this.VisInteractionEvents = VisInteractionEvents.getInstance();
     this.questionViews = QuestionViews.getInstance();
     this.visArticles = VisArticles.getInstance();
     this.tutorful = Tutorful.getInstance();

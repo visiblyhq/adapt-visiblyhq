@@ -28,11 +28,7 @@ export default class VisTopNavBarReferenceMaterialButtonView extends NavigationB
   }
 
   onClicked(event) {
-    try {
-      AdaptEventTrackingChannel?.postMessage('reference_material_button');
-    } catch (error) {
-      console.log('Caught notification channel error');
-    }
+    Adapt.trigger("visibly:event", "referenceMaterialOverlay.bookButton.click");
     
     var children = this.pageModel.getChildren()?.models;
 

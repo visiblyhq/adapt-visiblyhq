@@ -3,6 +3,7 @@ import a11y from "core/js/a11y";
 import { templates } from "core/js/reactHelpers";
 import ReactDOM from "react-dom";
 import React from "react";
+import Adapt from "core/js/adapt";
 
 class BottomButtonView extends ButtonsView {
   initialize(options) {
@@ -41,12 +42,8 @@ class BottomButtonView extends ButtonsView {
   }
 
   onMyButtonClick(event) {
-    try {
-      AdaptEventTrackingChannel?.postMessage("bottom_button_click");
-    } catch (error) {
-      console.log('Caught notification channel error');
-    }
-    
+    Adapt.trigger("visibly:event", "mainPage.bottomButton.click");
+
     if (this.data.text === "Submit") {
       super.onActionClicked();
     }
