@@ -28,6 +28,8 @@ export default class VisTopNavBarReferenceMaterialButtonView extends NavigationB
   }
 
   onClicked(event) {
+    Adapt.trigger("visibly:event", "referenceMaterialOverlay.bookButton.click");
+    
     var children = this.pageModel.getChildren()?.models;
 
     var currentArticle = children.filter((el) => el.get("_current"))[0];

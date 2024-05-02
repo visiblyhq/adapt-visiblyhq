@@ -91,6 +91,7 @@ class ReferenceMaterialOverlay extends Backbone.Controller {
         $(".vistopnavbar_book_button").css({ opacity: "0.25" });
 
         this.hide(articleId);
+        Adapt.trigger("visibly:event", "referenceMaterialOverlay.bookButton.click");
         navigateToArticle(event.currentArticle, articleToNavigateTo);
       },
       referenceMaterials:
