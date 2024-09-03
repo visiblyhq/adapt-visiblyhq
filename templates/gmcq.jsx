@@ -1,3 +1,6 @@
+// Modified version of: https://github.com/adaptlearning/adapt-contrib-gmcq/blob/master/templates/gmcq.jsx
+// Covered by License: https://github.com/adaptlearning/adapt-contrib-gmcq/blob/master/LICENSE
+
 import Adapt from "core/js/adapt";
 import a11y from "core/js/a11y";
 import React from "react";

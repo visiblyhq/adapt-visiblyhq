@@ -1,3 +1,6 @@
+// Modified version of: https://github.com/adaptlearning/adapt-contrib-core/blob/master/templates/image.jsx
+// Covered by License: https://github.com/adaptlearning/adapt-contrib-core/blob/master/LICENSE
+
 import device from "core/js/device";
 import a11y from "core/js/a11y";
 import React from "react";

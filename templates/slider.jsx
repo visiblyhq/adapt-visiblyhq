@@ -1,3 +1,6 @@
+// Modified version of: https://github.com/adaptlearning/adapt-contrib-slider/blob/master/templates/slider.jsx
+// Covered by License: https://github.com/adaptlearning/adapt-contrib-slider/blob/master/LICENSE
+
 import React, { useRef } from "react";
 import { classes, templates } from "core/js/reactHelpers";
 
