@@ -1,3 +1,6 @@
+// Modified version of: https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/blob/master/js/adapt-contrib-pageLevelProgress.js
+// Covered by License: https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/blob/master/LICENSE
+
 import Adapt from "core/js/adapt";
 import NavigationButtonModel from "core/js/models/NavigationButtonModel";
 import VisTopNavBarReferenceMaterialButtonView from "./visTopNavBarReferenceMaterialButtonView";

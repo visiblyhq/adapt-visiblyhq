@@ -1,3 +1,6 @@
+// Modified version of: https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/blob/master/js/PageLevelProgressIndicatorView.js
+// Covered by License: https://github.com/adaptlearning/adapt-contrib-pageLevelProgress/blob/master/LICENSE
+
 import Adapt from "core/js/adapt";
 
 class VisTopNavBarProgressView extends Backbone.View {
